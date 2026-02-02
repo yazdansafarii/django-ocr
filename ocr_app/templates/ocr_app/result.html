@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتیجه پردازش OCR</title>
+    <style>
+        body { font-family: Tahoma, Arial, sans-serif; background-color: #f4f7f6; padding: 20px; line-height: 1.6; }
+        .container { max-width: 900px; margin: 0 auto; background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        h2 { color: #2c3e50; border-bottom: 2px solid #3498db; pb: 10px; }
+        .meta-info { font-size: 0.9em; color: #7f8c8d; margin-bottom: 20px; }
+        .result-box { 
+            background: #f9f9f9; 
+            padding: 20px; 
+            border: 1px id #ddd; 
+            border-radius: 5px; 
+            white-space: pre-wrap; /* برای حفظ اینترها و فاصله‌های متن استخراج شده */
+            min-height: 300px;
+            direction: rtl;
+            text-align: right;
+            color: #333;
+        }
+        .btn {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        .btn:hover { background: #2980b9; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>متن استخراج شده از فایل: {{ doc.title|default:"بدون نام" }}</h2>
+    
+    <div class="meta-info">
+        تاریخ آپلود: {{ doc.created_at|date:"Y-m-d H:i" }} <br>
+        فایل اصلی: <a href="{{ doc.pdf_file.url }}" target="_blank">مشاهده PDF</a>
+    </div>
+
+    <hr>
+
+    <div class="result-box">
+        {% if doc.content %}
+            {{ doc.content }}
+        {% else %}
+            <p style="color: red;">متاسفانه متنی شناسایی نشد یا پردازش با خطا مواجه شده است.</p>
+        {% endif %}
+    </div>
+
+    <a href="{% url 'ocr_upload' %}" class="btn">آپلود فایل جدید</a>
+</div>
+
+</body>
+</html>

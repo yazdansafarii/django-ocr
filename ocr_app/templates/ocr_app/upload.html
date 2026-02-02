@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>آپلود فایل OCR</title>
+    <style>
+        #loading { display: none; color: blue; font-weight: bold; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <h2>سیستم استخراج متن هوشمند</h2>
+    <form id="ocrForm" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" onclick="showLoading()">شروع عملیات پردازش</button>
+    </form>
+
+    <div id="loading">⚠️ در حال پردازش تصویر و استخراج متن... لطفاً شکیبا باشید.</div>
+
+    <script>
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('ocrForm').style.opacity = '0.5';
+        }
+    </script>
+</body>
+</html>
