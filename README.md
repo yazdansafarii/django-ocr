@@ -64,5 +64,5 @@ This is a powerful web-based application built with **Django** and **EasyOCR**. 
 ### 🚀 نصب و راه‌اندازی
 ۱. **کلون کردن مخزن:**
 ```bash
-git clone [https://github.com/yourusername/DJANGO-PDF-IMAGE-OCR.git](https://github.com/yourusername/DJANGO-PDF-IMAGE-OCR.git)
+git clone [https://github.com/yazdansafarii/DJANGO-PDF-IMAGE-OCR.git](https://github.com/yourusername/DJANGO-PDF-IMAGE-OCR.git)
 cd DJANGO-PDF-IMAGE-OCR
